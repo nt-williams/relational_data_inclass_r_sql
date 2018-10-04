@@ -49,7 +49,7 @@ sqldf("SELECT COUNT(respondent_sequence_number) AS num_refused
 
 sqldf("SELECT d.gender, ROUND(AVG(t.LDL_cholesterol_mg_dL), 1) AS mean_ldl
        FROM nhanes_demo AS d 
-       LEFT JOIN nhanes_tri AS t 
+       INNER JOIN nhanes_tri AS t 
           ON d.respondent_sequence_number = t.Respondent_sequence_number
        GROUP BY d.gender")
 
@@ -59,7 +59,7 @@ sqldf("SELECT d.race_hispanic_origin_w_nh_asian AS race,
           MIN(t.Triglyceride_mmol_L) AS min_tri, 
           MAX(t.Triglyceride_mmol_L) AS max_tri
       FROM nhanes_demo AS d
-      LEFT JOIN nhanes_tri AS t
+      INNER JOIN nhanes_tri AS t
           ON d.respondent_sequence_number = t.Respondent_sequence_number
       GROUP BY race")
 
